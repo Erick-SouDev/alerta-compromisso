@@ -5,20 +5,21 @@ import java.io.Serializable;
 import javax.swing.SwingConstants;
 
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
 
 @Embeddable
 public class Local  implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private String regial;
+	private String cidade;
 	private String nomeRua;
 	private String numeroLocal;
 	public String getRegial() {
-		return regial;
+		return cidade;
 	}
-	public void setRegial(String regial) {
-		this.regial = regial;
+	public void setRegial(String cidade) {
+		this.cidade = cidade;
 	}
 	public String getNomeRua() {
 		return nomeRua;
@@ -32,6 +33,7 @@ public class Local  implements Serializable{
 	public void setNumeroLocal(String numeroLocal) {
 		this.numeroLocal = numeroLocal;
 	}
+	
 	
 	
 }

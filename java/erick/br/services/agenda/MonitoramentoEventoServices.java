@@ -10,13 +10,8 @@ import org.springframework.stereotype.Service;
 @EnableScheduling
 public class MonitoramentoEventoServices {
 
+	@Scheduled(fixedDelay = 5000, initialDelay = 2000)
+	public void monitoradataEventos() {
 
-	@Scheduled(fixedDelay = 5000 , initialDelay = 2000)
-	public  void monitoradataEventos()
-	{
-		
-		 
-		 
-		 
 	}
 }
