@@ -6,7 +6,7 @@ BRIFING DO PROJETO AQUI ESTA UMA BREVE DESCRICAO DESSE PROJETO QUE ESTARA SENDO 
 Resumo Detalhado:
 
 Introdução:
-O projeto "Agendador de Eventos" é uma aplicação web desenvolvida utilizando a tecnologia Spring MVC como framework principal. O objetivo do projeto é criar uma plataforma que permita aos usuários agendar eventos, atualizar agendas e receber notificações automáticas por email. Para realizar as notificações automáticas, o projeto utilizará o agendamento de tarefas (Scheduled Tasks).
+O projeto "Agendador de Eventos" é uma aplicação web desenvolvida utilizando a tecnologia Spring MVC como framework principal. O objetivo do projeto é criar uma plataforma que permita aos usuários agendar eventos, atualizar agendas e receber notificações automáticas por email. Para realizar as notificações automáticas, o projeto utilizará o agendamento de tarefas (Scheduled Tasks). ou no ingles com anotacao @scheduled
 
 Tecnologias Utilizadas:
 
