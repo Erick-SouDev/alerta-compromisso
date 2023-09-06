@@ -14,20 +14,16 @@ import erick.br.model.Evento;
 
 @SpringBootApplication
 @EnableScheduling
-@EnableJpaRepositories
-@EnableWebMvc
+@EnableJpaRepositories(basePackages = "erick.br.repository")
 @ComponentScan(basePackages = {"erick.br.*"})
 @EntityScan(basePackages = {"erick.br.model"})
-@ConfigurationPropertiesScan(basePackages = {"erick.br.configuration.*"})
+
 
 public class CriareventosApplication {
 
-	public static void main(String[] args) {
+	public static   void main(String[] args) {
 		SpringApplication.run(CriareventosApplication.class, args);
 		
-		
-		
-				
 	}
 
 }
