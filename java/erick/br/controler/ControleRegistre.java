@@ -18,13 +18,26 @@ public class ControleRegistre {
 
 	@Autowired
 	RepositoryParticipante repositoryParticipante;
-	
+
 	@GetMapping(value = { "/" })
 	public ModelAndView getRegistre() {
 
 		ModelAndView mAndView = new ModelAndView("registre");
 		mAndView.addObject("participante", new Participante());
 		return mAndView;
+	}
+
+	@GetMapping(value = { "/evento" })
+	public ModelAndView getEvento() {
+
+		ModelAndView mAndView = new ModelAndView("views/cadastroevento");
+		return mAndView;
+	}
+
+	@GetMapping(value = { "/login" })
+	public String getLogin() {
+
+		return "login";
 	}
 
 	@PostMapping(value = { "/registrar/usuario" })
@@ -35,12 +48,14 @@ public class ControleRegistre {
 		if (result.hasErrors()) {
 			return modelAndView;
 		}
-        Participante particip = repositoryParticipante.save(participante);
-        if(particip.getId() != null) {
-        	modelAndView.addObject("participante", new Participante());
-        	modelAndView.addObject("msg", "usuario salvo com sucesso");
 
-        }
+		Participante particip = repositoryParticipante.save(participante);
+
+		if (particip.getId() != null) {
+			modelAndView.addObject("participante", new Participante());
+			modelAndView.addObject("msg", "usuario salvo com sucesso");
+
+		}
 		return modelAndView;
 	}
 }
