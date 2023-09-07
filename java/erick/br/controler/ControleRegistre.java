@@ -19,7 +19,7 @@ public class ControleRegistre {
 	@Autowired
 	RepositoryParticipante repositoryParticipante;
 
-	@GetMapping(value = { "/" })
+	@GetMapping(value = { "/registre" })
 	public ModelAndView getRegistre() {
 
 		ModelAndView mAndView = new ModelAndView("registre");
@@ -27,18 +27,9 @@ public class ControleRegistre {
 		return mAndView;
 	}
 
-	@GetMapping(value = { "/evento" })
-	public ModelAndView getEvento() {
 
-		ModelAndView mAndView = new ModelAndView("views/cadastroevento");
-		return mAndView;
-	}
 
-	@GetMapping(value = { "/login" })
-	public String getLogin() {
-
-		return "login";
-	}
+	
 
 	@PostMapping(value = { "/registrar/usuario" })
 	public ModelAndView registrarUsuario(@Valid Participante participante, BindingResult result) {
