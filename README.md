@@ -1,14 +1,5 @@
 
 
-
-
-
-
-
-
-
-
-
 <h1> Projeto "Agendador de Eventos com Spring MVC, PostgreSQL, Thymeleaf e Notificações Automáticas por Email"</h1>
 ## Resumo Detalhado:
 
