@@ -10,6 +10,7 @@ O projeto "Agendador de Eventos" é uma aplicação web desenvolvida utilizando 
  ![spring](https://github.com/Erick-SouDev/minha-biblioteca/assets/139890795/6f8f4335-4aef-488b-bf78-ff0bb15335ee)
  ![thymeleaf](https://github.com/Erick-SouDev/minha-biblioteca/assets/139890795/5562d495-392e-42b9-98b1-b47c0f211ef0)
  ![postgres](https://github.com/Erick-SouDev/minha-biblioteca/assets/139890795/7d8e3a6a-b0f9-4235-b1bb-c71207d94a97)
+ ![mvc](https://github.com/Erick-SouDev/alerta-eventos/assets/139890795/ce07aab0-aed7-4ed5-b5fa-9262d94797f6)
 
 ### Funcionalidades Principais:
 - Cadastro de Eventos: Os usuários podem cadastrar eventos, incluindo informações como título, data, hora, descrição e localização.
