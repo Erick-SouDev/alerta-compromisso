@@ -1,11 +1,8 @@
 package erick.br.configuration;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import erick.br.configuration.security.InterceptorRequest;
 
 @Configuration
 public class ConfigurationWerConfig    implements  WebMvcConfigurer {
@@ -18,12 +15,15 @@ public class ConfigurationWerConfig    implements  WebMvcConfigurer {
 	}
 	
 	
-	@Override
+	/*@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		
 		registry.addInterceptor(new  InterceptorRequest())
 		.addPathPatterns("/views/" ,"/**");
 		
 		
-	}
+	}*/
+	
+	
+	
 }

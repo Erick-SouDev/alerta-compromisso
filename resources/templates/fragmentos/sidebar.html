@@ -2,7 +2,7 @@
 	<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 		<div class="sb-sidenav-menu">
 			<div style="text-align: center;" id="name-user">
-			  <strong>Bem vindo</strong>	<p style="color: white;" th:text="${session.participante.nome}"></p>
+			  <strong>Bem vindo</strong>	<p style="color: white;" th:text="${session.usuario.nome}"></p>
 			</div>
 			<div class="nav">
 				<div style="display: flex; align-items: center; justify-content: center;"
@@ -11,9 +11,8 @@
 				</div>
 
 				<div class="sb-sidenav-menu-heading">PAINEL ADMIN</div>
-				<a class="nav-link" href="layout-static.html">Agendar Eventos</a>
-				<a class="nav-link" href="layout-sidenav-light.html">Buscar Eventos</a>
-				<a class="nav-link" href="layout-static.html">Lista Eventos </a>
+				<a class="nav-link" th:href="@{/agendar}">Agendar Eventos</a>
+				<a class="nav-link" th:href="@{/home}" >Voltar Para Home </a>
 
 			</div>
 		</div>

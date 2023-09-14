@@ -5,12 +5,12 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import erick.br.model.Participante;
+import erick.br.model.Usuario;
 
 @Repository
 @Transactional
-public interface RepositoryParticipante  extends CrudRepository<Participante, Long> {
+public interface RepositoryUsuario  extends CrudRepository<Usuario, Long> {
 
-	@Query("select p from Participante p where p.email = ?1 and p.senha = senha")
-	public Participante verificarAutenticacao(String email ,  String senha);
+	@Query("select u from Usuario u where u.email = ?1 and u.senha = ?2")
+	public Usuario verificarAutenticacao(String email ,  String senha);
 }

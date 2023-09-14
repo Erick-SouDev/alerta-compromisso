@@ -19,10 +19,10 @@ import erick.br.model.Evento;
 @EntityScan(basePackages = {"erick.br.model"})
 
 
-public class CriareventosApplication {
+public class CriarEventosApplication {
 
 	public static   void main(String[] args) {
-		SpringApplication.run(CriareventosApplication.class, args);
+		SpringApplication.run(CriarEventosApplication.class, args);
 		
 	}
 

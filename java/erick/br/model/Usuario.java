@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
 
 @Entity
-public class Participante implements Serializable {
+public class Usuario implements Serializable {
 
 	@Transient
 	private static final long serialVersionUID = 1L;
@@ -24,8 +25,8 @@ public class Participante implements Serializable {
 	@NotBlank(message = "nome obrigatorio")
 	private String nome;
 	@NotBlank(message = "e-mail obrigatorio")
-
 	private String email;
+
 	@NotBlank(message = "senha obrigatorio")
 	private String senha;
 
@@ -42,13 +43,8 @@ public class Participante implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Participante other = (Participante) obj;
+		Usuario other = (Usuario) obj;
 		return Objects.equals(id, other.id);
-	}
-
-	@Override
-	public String toString() {
-		return "Participante [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + "]";
 	}
 
 	public Long getId() {
@@ -76,11 +72,18 @@ public class Participante implements Serializable {
 	}
 
 	public String getSenha() {
-		return this.senha;
+		return senha;
 	}
 
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + "]";
+	}
+
+
 
 }
