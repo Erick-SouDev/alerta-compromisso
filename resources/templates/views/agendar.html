@@ -15,8 +15,6 @@
 							<h3 class="text-center font-weight-light my-4">Agendar Evento</h3>
 						</div>
 
-
-
 						<div class="card mb-4" style="margin-top: 10%;">
 							<div class="card-body">
 								<form class="row g-2" method="post" th:action="@{/agendar/evento}"
@@ -45,8 +43,9 @@
 
 									<div class="col-6">
 										<label for="dataEvento" class="form-label">DATA EVENTO</label>
-										<input type="date" class="form-control" id="dataEvento" th:field="*{dataEvento}" pattern="yyyy-mm-dd"
-											th:errorClass="is-invalid" placeholder="data do avento">
+										<input type="date" class="form-control" id="dataEvento" th:field="*{dataEvento}"
+											pattern="yyyy-mm-dd" th:errorClass="is-invalid"
+											placeholder="data do avento">
 										<div class="invalid-feedback" th:errors="*{dataEvento}"></div>
 
 									</div>
@@ -102,20 +101,16 @@
 												th:value="${enum}" th:text="${enum}"></option>
 										</select>
 									</div>
-
-
 									<div class="col-12">
-                                    <br>
-                                    <br>
+										<br>
+										<br>
 										<button type="submit" class="btn btn-primary">AGENDAR</button>
-										<button type="reset" class="btn btn-primary">NOVO</button>
+										<button type="button" class="btn btn-primary">NOVO</button>
 									</div>
 								</form>
 							</div>
 						</div>
-
 					</div>
-
 					<br>
 					<br>
 
@@ -124,51 +119,78 @@
 							<i class="fas fa-table me-1"></i>
 							TABELA DE EVENTOS
 						</div>
-						<div style="height: 300px; overflow: scroll;" class="card-header">
-							<div class="col-md-6">
+						<div class="card-header">
+							<div style="height: 300px; overflow: scroll;" class="col-md-12">
 								<div class="input-group mb-3">
 									<input type="text" class="form-control" placeholder="consultar eventos"
 										aria-label="Recipient's username" aria-describedby="button-addon2">
 									<button class="btn btn-success" type="button" id="button-addon2">Consultar
 										Evento</button>
 								</div>
-
+								<table class="table">
+									<thead>
+										<tr>
+											<th scope="col">ID</th>
+											<th scope="col">EVENTO</th>
+											<th scope="col">STATUS</th>
+											<th scope="col">DATA</th>
+											<th scope="col">EDITAR</th>
+											<th scope="col">DELETAR</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="p : ${paginas}">
+											<td th:text="${p.id}"></td>
+											<td th:text="${p.nomeEvento}"></td>
+											<td th:text="${p.eventoStatus}"></td>
+											<td th:text="${p.dataEvento}"></td>
+											<td><a th:href="@{/evento/{id}/editar(id=${p.id})}" class="btn btn-success"
+													id="button-addon2">EDITAR EVENTO</a></td>
+											<td><a th:href="@{/evento/{id}/deletar(id=${p.id})}" class="btn btn-danger"
+													id="button-addon2">DELETAR EVENTO</a></td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="footer-card" style="color: white;">
+									<span th:if="${paginas.hasPrevious()}">
+										<a th:class="page-link" style="display: inline-block ; background-color: #0000FF; width: 120px;  text-align: center; padding: 10px;">Anterior</a>
+									</span>
+									<th:block th:each="totalPaginas : ${#numbers.sequence(0 , paginas.totalPages - 1)}">
+										<a th:class="page-link"
+											style="display: inline-block ; background-color: #0000FF	; width: 40px;  text-align: center; padding: 10px;"
+											href="#">[[${totalPaginas}+1]]</a>
+									</th:block>
+									
+									<span th:if="${paginas.hasNext()}">
+										<a th:class="page-link" style="display: inline-block ; background-color: #0000FF	; width: 120px;  text-align: center; padding: 10px;">Proximo</a>
+									</span>
+								</div>
 							</div>
-							<table class="table">
-								<thead>
-									<tr>
-										<th scope="col">ID</th>
-										<th scope="col">EVENTO</th>
-										<th scope="col">STATUS</th>
-										<th scope="col">DATA</th>
-										<th scope="col">EDITAR</th>
-										<th scope="col">DELETAR</th>
 
-
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="event : ${listaEventos}">
-										<td th:text="${event.id}"></td>
-										<td th:text="${event.nomeEvento}"></td>
-										<td th:text="${event.eventoStatus}"></td>
-										<td th:text="${event.dataEvento}"></td>
-										<td><a th:href="@{/evento/{id}/editar(id=${event.id})}" class="btn btn-success"  id="button-addon2">EDITAR EVENTO</a></td>
-
-									</tr>
-
-								</tbody>
-							</table>
-							<div class="card-footer">....</div>
 						</div>
 					</div>
 
-				</div>
+					<!--
+						
+						<div class="footer-card">
+						<nav aria-label="Page navigation example">
+							<ul class="pagination">
+								<li class="page-item"><a th:if="${paginas.hasPrevious()}" class="page-link"
+										href="#">Anterior</a></li>
 
-			</div>
+								<li class="page-item"><a class="page-link"
+										th:each="totalPaginas : ${#numbers.sequence(0 , paginas.totalPages - 1)}"
+										href="#">[[${totalPaginas}+1]]</a></li>
 
-		</div>
+								<li class="page-item"><a th:if="${paginas.hasNext()}" class="page-link"
+										href="#">Proximo</a></li>
+							</ul>
+						</nav>
+					</div>
+					-->
 	</main>
+
+
 
 </body>
 

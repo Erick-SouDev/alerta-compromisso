@@ -4,12 +4,16 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 
 @Entity
@@ -83,7 +87,5 @@ public class Usuario implements Serializable {
 	public String toString() {
 		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + "]";
 	}
-
-
 
 }

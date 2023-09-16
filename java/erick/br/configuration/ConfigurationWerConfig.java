@@ -10,19 +10,12 @@ public class ConfigurationWerConfig    implements  WebMvcConfigurer {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**" ).addResourceLocations("/resources/" )
+		registry.addResourceHandler("/resources/**" , "/static/**" ).addResourceLocations("/resources/" , "/static/" )
 		.resourceChain(true);
 	}
 	
 	
-	/*@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		
-		registry.addInterceptor(new  InterceptorRequest())
-		.addPathPatterns("/views/" ,"/**");
-		
-		
-	}*/
+	
 	
 	
 	

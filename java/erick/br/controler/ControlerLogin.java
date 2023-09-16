@@ -33,7 +33,6 @@ public class ControlerLogin {
 	public ModelAndView autenticarUsuario(String email, String senha, HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
 		Usuario usuario = repositoryParticipante.verificarAutenticacao(email, senha);
-
 		if (usuario == null) {
 			modelAndView.addObject("erro", "Usuario invalido ");
 			modelAndView.setViewName("login");

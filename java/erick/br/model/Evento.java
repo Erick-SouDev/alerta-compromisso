@@ -21,6 +21,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.PastOrPresent;
 
 @Entity
 public class Evento {
@@ -37,8 +38,8 @@ public class Evento {
 	@DateTimeFormat(iso = ISO.DATE , pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	private Date dataEvento;
-
-	@ManyToOne( optional = false , fetch = FetchType.LAZY)
+    
+	@ManyToOne()
 	private Usuario usuario;
 
 	@Embedded
