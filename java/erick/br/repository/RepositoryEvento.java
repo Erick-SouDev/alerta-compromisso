@@ -25,10 +25,13 @@ public interface RepositoryEvento extends JpaRepository<Evento, Long> {
 		evento.setNomeEvento(nomeEvento);
 
 		ExampleMatcher exampleMatcher = ExampleMatcher
-				.matchingAll().withMatcher("usuario", GenericPropertyMatcher.of(StringMatcher.CONTAINING , false))
-				.withMatcher("nomeEvento", GenericPropertyMatcher.of(StringMatcher.CONTAINING , false).startsWith().ignoreCase()); 
+				.matchingAll()
+				.withMatcher("usuario", GenericPropertyMatcher
+				.of(StringMatcher.CONTAINING , false))
+				.withMatcher("nomeEvento", GenericPropertyMatcher
+				.of(StringMatcher.CONTAINING , false)
+				.startsWith().ignoreCase()); 
 		Example<Evento> example = Example.of(evento, exampleMatcher);
-		
 		
 		return findAll(example, pageable);
 		
@@ -39,15 +42,14 @@ public interface RepositoryEvento extends JpaRepository<Evento, Long> {
 
 		Evento evento = new Evento();
 		evento.setUsuario(new Usuario(usuarioLogado));
-
 		
 		ExampleMatcher exampleMatcher = ExampleMatcher
-				.matchingAny().withMatcher("usuario_id", GenericPropertyMatcher
-				.of(StringMatcher.CONTAINING , false).contains()); 
+				.matchingAny()
+				.withMatcher("usuario_id", GenericPropertyMatcher
+				.of(StringMatcher.CONTAINING , false)
+				.contains()); 
 		
 		Example<Evento> example = Example.of(evento, exampleMatcher);
-					
-				
 		return findAll(example, pageable);
 	}
 
