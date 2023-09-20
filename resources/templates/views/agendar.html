@@ -17,7 +17,7 @@
 
 						<div class="card mb-4" style="margin-top: 10%;">
 							<div class="card-body">
-								<form class="row g-2" method="post" th:action="@{/agendar/evento}"
+								<form class="row g-2" method="post" th:action="@{/evento/agendar}"
 									th:object="${evento}">
 									<div th:if="${msg != null}" class="card-header">
 										<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -30,7 +30,7 @@
 									<div class="col-md-4">
 										<label for="id" class="form-label">ID</label>
 										<input type="text" readonly="readonly" class="form-control" id="id"
-											th:field="*{id}" placeholder="id evento">
+											placeholder="id evento" th:field="*{id}">
 									</div>
 
 
@@ -44,10 +44,17 @@
 									<div class="col-6">
 										<label for="dataEvento" class="form-label">DATA EVENTO</label>
 										<input type="date" class="form-control" id="dataEvento" th:field="*{dataEvento}"
-											pattern="yyyy-mm-dd" th:errorClass="is-invalid"
+											pattern="yyyy-MM-dd " th:errorClass="is-invalid"
 											placeholder="data do avento">
 										<div class="invalid-feedback" th:errors="*{dataEvento}"></div>
 
+									</div>
+
+
+									<div class="col-6">
+										<label for="horaEvento" class="form-label">DATA EVENTO</label>
+										<input type="time" class="form-control" id="horaEvento" th:field="*{horaEvento}"
+											pattern="HH:mm" th:errorClass="is-invalid" placeholder="hora do avento">
 									</div>
 
 
@@ -107,6 +114,7 @@
 										<button type="submit" class="btn btn-primary">AGENDAR</button>
 										<button type="button" class="btn btn-primary">NOVO</button>
 									</div>
+									</th>
 								</form>
 							</div>
 						</div>
@@ -119,14 +127,21 @@
 							<i class="fas fa-table me-1"></i>
 							TABELA DE EVENTOS
 						</div>
+
+						<!--
+							th:field="*{buscarEvento}" 
+							th:object="${buscarEvento}" 
+						-->
+						<form action="/pesquisar" method="post"   > 
+							<div class="input-group mb-3">
+								<input type="text" name="buscarEvento" 	th:value="${buscarEvento}" 	  class="form-control"
+									placeholder="DIGITE AQUI SUA PESQUISAR" aria-label="Recipient's username"
+									aria-describedby="button-addon2">
+								<button type="submit" class="btn btn-primary">consultar</button>
+							</div>
+						</form>
 						<div class="card-header">
 							<div style="height: 300px; overflow: scroll;" class="col-md-12">
-								<div class="input-group mb-3">
-									<input type="text" class="form-control" placeholder="consultar eventos"
-										aria-label="Recipient's username" aria-describedby="button-addon2">
-									<button class="btn btn-success" type="button" id="button-addon2">Consultar
-										Evento</button>
-								</div>
 								<table class="table">
 									<thead>
 										<tr>
@@ -139,59 +154,27 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="p : ${paginas}">
+										<tr th:each="p : ${paginas.content}">
 											<td th:text="${p.id}"></td>
 											<td th:text="${p.nomeEvento}"></td>
 											<td th:text="${p.eventoStatus}"></td>
 											<td th:text="${p.dataEvento}"></td>
-											<td><a th:href="@{/evento/{id}/editar(id=${p.id})}" class="btn btn-success"
-													id="button-addon2">EDITAR EVENTO</a></td>
-											<td><a th:href="@{/evento/{id}/deletar(id=${p.id})}" class="btn btn-danger"
-													id="button-addon2">DELETAR EVENTO</a></td>
+
 										</tr>
 									</tbody>
 								</table>
-								<div class="footer-card" style="color: white;">
-									<span th:if="${paginas.hasPrevious()}">
-										<a th:class="page-link" style="display: inline-block ; background-color: #0000FF; width: 120px;  text-align: center; padding: 10px;">Anterior</a>
-									</span>
-									<th:block th:each="totalPaginas : ${#numbers.sequence(0 , paginas.totalPages - 1)}">
-										<a th:class="page-link"
+
+								<div class="footer-card" style="color: white;" th:if="${paginas.totalPages > 0}">
+									<th:block th:each="index: ${#numbers.sequence(0 , paginas.totalPages - 1)}">
+										<a th:if="${paginas.totalPages > 0}" class="page-link"
 											style="display: inline-block ; background-color: #0000FF	; width: 40px;  text-align: center; padding: 10px;"
-											href="#">[[${totalPaginas}+1]]</a>
+											th:href="@{/proxima/pagina(page=${index} , size=${paginas.size} , buscarEvento=${buscarEvento})}">[[${index}+1]]</a>
 									</th:block>
-									
-									<span th:if="${paginas.hasNext()}">
-										<a th:class="page-link" style="display: inline-block ; background-color: #0000FF	; width: 120px;  text-align: center; padding: 10px;">Proximo</a>
-									</span>
 								</div>
 							</div>
-
 						</div>
 					</div>
-
-					<!--
-						
-						<div class="footer-card">
-						<nav aria-label="Page navigation example">
-							<ul class="pagination">
-								<li class="page-item"><a th:if="${paginas.hasPrevious()}" class="page-link"
-										href="#">Anterior</a></li>
-
-								<li class="page-item"><a class="page-link"
-										th:each="totalPaginas : ${#numbers.sequence(0 , paginas.totalPages - 1)}"
-										href="#">[[${totalPaginas}+1]]</a></li>
-
-								<li class="page-item"><a th:if="${paginas.hasNext()}" class="page-link"
-										href="#">Proximo</a></li>
-							</ul>
-						</nav>
-					</div>
-					-->
 	</main>
-
-
-
 </body>
 
 

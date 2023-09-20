@@ -21,29 +21,32 @@ public class ControleRegistre {
 	RepositoryUsuario repositoryUsuario;
 
 	@GetMapping(value = { "/registrar" })
-	public ModelAndView getRegistre() {
+	public ModelAndView getRegistre(ModelAndView modelAndView) {
 
-		ModelAndView mAndView = new ModelAndView("registre");
-		mAndView.addObject("usuario", new Usuario());
-		return mAndView;
+		modelAndView.setViewName("views/registre");
+
+		modelAndView.addObject("usuario", new Usuario());
+		return modelAndView;
 	}
 
 	@PostMapping(value = { "/registrar/usuario" })
-	public ModelAndView registrarUsuario(@Valid Usuario usuario, BindingResult result) {
+	public ModelAndView registrarUsuario(@Valid Usuario usuario, BindingResult result, ModelAndView modelAndView) {
 
-		ModelAndView modelAndView = new ModelAndView("registre");
+		modelAndView.setViewName("views/registre");
 
 		try {
-		if (result.hasErrors()) {
-			return modelAndView;
-		}
-		Usuario particip = repositoryUsuario.save(usuario);
-		modelAndView.addObject("usuario", new Usuario());
-		modelAndView.addObject("msg", "usuario salvo com sucesso");
 
-		}catch (DataIntegrityViolationException e) {
+			if (result.hasErrors()) {
+				return modelAndView;
+			}
+
+			Usuario user = repositoryUsuario.save(usuario);
+			modelAndView.addObject("usuario", new Usuario());
+			modelAndView.addObject("msg", "usuario salvo com sucesso");
+
+		} catch (DataIntegrityViolationException e) {
 			e.printStackTrace();
-			modelAndView.addObject("msg", "Email ou Senha Ja Existe " );
+			modelAndView.addObject("msg", "Email ou Senha Ja Existe ");
 		}
 		return modelAndView;
 

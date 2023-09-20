@@ -25,7 +25,7 @@
 									<h3 class="text-center font-weight-light my-4">Crie Sua Conta </h3>
 								</div>
 								<div class="card-body">
-									<form th:action="@{/registrar/usuario}" method="post" th:object="${usuario}">
+									<form th:action="@{/registrar/usuario}" method="post" th:object="${usuario}" id="formCadastroUser">
 
 										<div th:if="${msg != null}"
 											class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -75,7 +75,7 @@
 									</form>
 								</div>
 								<div class="card-footer text-center py-3">
-									<div class="small"><a th:href="@{/login}">ir para login</a></div>
+									<div class="small"><a th:href="@{/}">ir para login</a></div>
 								</div>
 							</div>
 						</div>
@@ -102,14 +102,16 @@
 
 	</div>
 	
+ 
 
-	<script src="js/scripts.js"></script>
+
+<script src="/js/scripts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="assets/demo/chart-area-demo.js"></script>
-<script src="assets/demo/chart-bar-demo.js"></script>
+<script src="/assets/demo/chart-area-demo.js"></script>
+<script src="/assets/demo/chart-bar-demo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 	crossorigin="anonymous"></script>
-<script src="js/datatables-simple-demo.js"></script>
+<script src="/js/datatables-simple-demo.js"></script>
 
 
 

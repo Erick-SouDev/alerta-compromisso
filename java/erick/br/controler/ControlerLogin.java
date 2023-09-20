@@ -17,22 +17,12 @@ public class ControlerLogin {
 	@Autowired
 	RepositoryUsuario repositoryParticipante;
 
-	@GetMapping(value = { "/login" })
-	public String getLogin() {
+	@GetMapping(value = { "/" })
+	public String getLogin() {return "login";}
 
-		return "login";
-	}
-
-	@GetMapping(value = { "/home" })
-	public String voltar() {
-
-		return "views/home";
-	}
-
-	@PostMapping(value = "/autenticar")
-	public ModelAndView autenticarUsuario(String email, String senha, HttpSession session) {
-		ModelAndView modelAndView = new ModelAndView();
-		Usuario usuario = repositoryParticipante.verificarAutenticacao(email, senha);
+	@PostMapping(value = "/login")
+	public ModelAndView autenticarUsuario(String email, String senha, HttpSession session ,ModelAndView modelAndView) {
+		Usuario usuario = repositoryParticipante.verificarAutenticacao(email, senha );
 		if (usuario == null) {
 			modelAndView.addObject("erro", "Usuario invalido ");
 			modelAndView.setViewName("login");
@@ -40,11 +30,8 @@ public class ControlerLogin {
 		} else {
 			session.setAttribute("usuario", usuario);
 			modelAndView.setViewName("views/home");
-
 		}
-
 		return modelAndView;
-
 	}
 
 	@GetMapping(value = { "/logout" })
@@ -54,4 +41,7 @@ public class ControlerLogin {
 		return "/login";
 
 	}
+
+	@GetMapping(value = { "/home" })
+	public String voltar() {return "views/home";}
 }

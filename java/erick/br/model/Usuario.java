@@ -39,6 +39,25 @@ public class Usuario implements Serializable {
 		return Objects.hash(id);
 	}
 
+	public Usuario() {
+		super();
+	}
+
+	public Usuario(Long id) {
+		super();
+		this.id = id;
+	}
+
+	public Usuario(Long id, @NotBlank(message = "nome obrigatorio") String nome,
+			@NotBlank(message = "e-mail obrigatorio") String email,
+			@NotBlank(message = "senha obrigatorio") String senha) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
