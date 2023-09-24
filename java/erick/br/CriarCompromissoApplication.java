@@ -13,11 +13,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ComponentScan(basePackages = { "erick.br.*" })
 @EntityScan(basePackages = { "erick.br.model" })
 
-public class CriarEventosApplication {
+public class CriarCompromissoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CriarEventosApplication.class, args);
+		SpringApplication.run(CriarCompromissoApplication.class, args);
 
-		
 	}
+
+
 }

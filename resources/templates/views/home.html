@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head th:insert="~{fragmentos/head :: head('home')}"></head>
- <link th:href="@{/css/card-styler.css}" rel="stylesheet" />
-<body class="sb-nav-fixed">
-	<header th:insert="~{fragmentos/nav-bar :: nav-bar}"></header>
-	<div id="layoutSidenav" th:insert="~{fragmentos/sidebar :: sidebar}"></div>
+<head th:include="~{fragmentos/head :: head('agendar evento')}"></head>
+<link th:href="@{/css/card-styler.css}" rel="stylesheet" />
 
+<body class="sb-nav-fixed">
+	<header th:replace="~{fragmentos/nav-bar :: nav-bar}"></header>
+	<div id="layoutSidenav" th:insert="~{fragmentos/sidebar :: sidebar}"></div>
 	<main>
-		
+
 		<section class="container" style="margin: 150px auto;">
 			<h1>Eventos</h1>
 			<div class="row">
@@ -37,83 +37,8 @@
 						<a href="#">tickets</a>
 					</section>
 				</article>
-				<article class="card fl-left">
-					<section class="date">
-						<time datetime="23th feb">
-							<span>23</span><span>feb</span>
-						</time>
-					</section>
-					<section class="card-cont">
-						<small>dj khaled</small>
-						<h3>corner obsest program</h3>
-						<div class="even-date">
-							<i class="fa fa-calendar"></i>
-							<time>
-								<span>wednesday 28 december 2014</span>
-								<span>08:55pm to 12:00 am</span>
-							</time>
-						</div>
-						<div class="even-info">
-							<i class="fa fa-map-marker"></i>
-							<p>
-								nexen square for people australia, sydney
-							</p>
-						</div>
-						<a href="#">tickets</a>
-					</section>
-				</article>
-			</div>
-			<div class="row">
-				<article class="card fl-left">
-					<section class="date">
-						<time datetime="23th feb">
-							<span>23</span><span>feb</span>
-						</time>
-					</section>
-					<section class="card-cont">
-						<small>dj khaled</small>
-						<h3>music kaboom festivel</h3>
-						<div class="even-date">
-							<i class="fa fa-calendar"></i>
-							<time>
-								<span>wednesday 28 december 2014</span>
-								<span>08:55pm to 12:00 am</span>
-							</time>
-						</div>
-						<div class="even-info">
-							<i class="fa fa-map-marker"></i>
-							<p>
-								nexen square for people australia, sydney
-							</p>
-						</div>
-						<a href="#">booked</a>
-					</section>
-				</article>
-				<article class="card fl-left">
-					<section class="date">
-						<time datetime="23th feb">
-							<span>23</span><span>feb</span>
-						</time>
-					</section>
-					<section class="card-cont">
-						<small>dj khaled</small>
-						<h3>hello dubai festivel</h3>
-						<div class="even-date">
-							<i class="fa fa-calendar"></i>
-							<time>
-								<span>wednesday 28 december 2014</span>
-								<span>08:55pm to 12:00 am</span>
-							</time>
-						</div>
-						<div class="even-info">
-							<i class="fa fa-map-marker"></i>
-							<p>
-								nexen square for people australia, sydney
-							</p>
-						</div>
-						<a href="#">cancel</a>
-					</section>
-				</article>
+
+
 			</div>
 		</section>
 	</main>

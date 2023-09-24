@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head th:insert="~{fragmentos/head :: head('agendar evento')}"></head>
+<head th:include="~{fragmentos/head :: head('agendar evento')}"></head>
 
 <body class="sb-nav-fixed">
-	<header th:insert="~{fragmentos/nav-bar :: nav-bar}"></header>
+	<header th:replace="~{fragmentos/nav-bar :: nav-bar}"></header>
 	<div id="layoutSidenav" th:insert="~{fragmentos/sidebar :: sidebar}"></div>
+	
 	<main>
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-7" style="margin-top: 10%; width: 1450px; height: 1200px;">
 					<div class="card shadow-lg border-0 rounded-lg mt-5">
 						<div class="card-header">
-							<h3 class="text-center font-weight-light my-4">Agendar Evento</h3>
+							<h3 class="text-center font-weight-light my-4">Criar Compromisso</h3>
 						</div>
 
 						<div class="card mb-4" style="margin-top: 10%;">
 							<div class="card-body">
-								<form class="row g-2" method="post" th:action="@{/evento/agendar}"
-									th:object="${evento}">
+								<form class="row g-2" method="post" th:action="@{/agendar/compromisso}" th:object="${compromisso}">
 									<div th:if="${msg != null}" class="card-header">
 										<div class="alert alert-warning alert-dismissible fade show" role="alert">
 											<strong th:text="${msg}"></strong>
@@ -29,98 +29,96 @@
 
 									<div class="col-md-4">
 										<label for="id" class="form-label">ID</label>
-										<input type="text" readonly="readonly" class="form-control" id="id"
-											placeholder="id evento" th:field="*{id}">
+										<input type="text"  class="form-control" id="id"
+											placeholder="id " readonly="readonly"   th:field="*{id}">
 									</div>
 
 
 									<div class="col-md-6">
-										<label for="nomeEvento" class="form-label">EVENTO</label>
-										<input type="text" class="form-control" id="nomeEvento" th:field="*{nomeEvento}"
-											th:errorClass="is-invalid" placeholder="nome do evento">
-										<div class="invalid-feedback" th:errors="*{nomeEvento}"></div>
+										<label for="nomeCompromisso" class="form-label">COMPROMISSO</label>
+										<input type="text" class="form-control" id="nomeCompromisso"  th:field="*{nomeCompromisso}"  
+											th:errorClass="is-invalid" placeholder="nome do compromisso">
+										<div class="invalid-feedback"  th:errors="*{nomeCompromisso}"></div>
 									</div>
 
 									<div class="col-6">
-										<label for="dataEvento" class="form-label">DATA EVENTO</label>
-										<input type="date" class="form-control" id="dataEvento" th:field="*{dataEvento}"
-											pattern="yyyy-MM-dd " th:errorClass="is-invalid"
-											placeholder="data do avento">
-										<div class="invalid-feedback" th:errors="*{dataEvento}"></div>
+										<label for="dataCompromisso" class="form-label">DATA COMPROMISSO</label>
+										<input type="date" class="form-control" id="dataCompromisso"   th:field="*{dataCompromisso}"
+											th:errorClass="is-invalid"
+											placeholder="data do compromisso">
+										<div class="invalid-feedback" th:errors="*{dataCompromisso}"></div>
 
 									</div>
 
 
 									<div class="col-6">
-										<label for="horaEvento" class="form-label">DATA EVENTO</label>
-										<input type="time" class="form-control" id="horaEvento" th:field="*{horaEvento}"
-											pattern="HH:mm" th:errorClass="is-invalid" placeholder="hora do avento">
+										<label for="horaCompromisso" class="form-label">HORA COMPROMISSO </label>
+										<input type="time" class="form-control" id="horaCompromisso"  th:field="*{horaCompromisso}"
+											pattern="HH:mm" th:errorClass="is-invalid" placeholder="hora do compromisso">
 									</div>
 
 
 									<div class="col-6">
 										<label for="cidade" class="form-label">NOME DA CIDADE</label>
-										<input type="text" class="form-control" id="cidade"
-											th:field="*{inderecoEvento.cidade}" th:errorClass="is-invalid"
+										<input type="text" class="form-control" id="cidade"  
+											th:field="*{inderecoCompromisso.cidade}"  th:errorClass="is-invalid"
 											placeholder="nome da  cidade ">
-										<div class="invalid-feedback" th:errors="*{inderecoEvento.cidade}"></div>
+										<div class="invalid-feedback" th:errors="*{inderecoCompromisso.cidade}"></div>
 									</div>
 
 									<div class="col-md-6">
 										<label for="bairro" class="form-label">NOME DO BAIRRO</label>
-										<input type="text" class="form-control" id="bairro"
-											th:field="*{inderecoEvento.bairro}" th:errorClass="is-invalid"
-											placeholder="nome do bairro">
-										<div class="invalid-feedback" th:errors="*{inderecoEvento.bairro}"></div>
+										<input type="text" class="form-control"  id="bairro"
+											th:field="*{inderecoCompromisso.bairro}" th:errorClass="is-invalid"
+											placeholder="nome do bairro" >
+										<div class="invalid-feedback" th:errors="*{inderecoCompromisso.bairro}"></div>
 									</div>
 
 
 									<div class="col-md-6">
 										<label for="rua" class="form-label">NOME DA RUA</label>
-										<input type="text" class="form-control" id="rua"
-											th:field="*{inderecoEvento.rua}" th:errorClass="is-invalid"
-											placeholder="nome da rua ">
-										<div class="invalid-feedback" th:errors="*{inderecoEvento.rua}"></div>
+										<input type="text" class="form-control" id="rua" 
+											th:field="*{inderecoCompromisso.rua}" th:errorClass="is-invalid"
+											placeholder="nome da rua " >
+										<div class="invalid-feedback" th:errors="*{inderecoCompromisso.rua}"></div>
 									</div>
 
 									<div class="col-md-6">
 										<label for="rua" class="form-label">LOCAL DO EVENTO</label>
-										<input type="text" class="form-control" id="local"
-											th:field="*{inderecoEvento.nomeLocal}" th:errorClass="is-invalid"
-											placeholder="nome do local do evento ">
-										<div class="invalid-feedback" th:errors="*{inderecoEvento.nomeLocal}"></div>
+										<input type="text" class="form-control" id="local" 
+											th:field="*{inderecoCompromisso.nomeLocal}" th:errorClass="is-invalid"
+											placeholder="nome do local do evento " >
+										<div class="invalid-feedback" th:errors="*{inderecoCompromisso.nomeLocal}"></div>
 									</div>
 
 
 									<div class="col-md-4">
 										<label for="numero" class="form-label">NUMERO DO LOCAL </label>
-										<input type="text" class="form-control" id="numero"
-											th:field="*{inderecoEvento.numero}" th:errorClass="is-invalid"
-											placeholder="numero do local">
-										<div class="invalid-feedback" th:errors="*{inderecoEvento.numero}"></div>
+										<input type="text" class="form-control" id="numero" 
+											th:field="*{inderecoCompromisso.numero}" th:errorClass="is-invalid"
+											placeholder="numero do local" >
+										<div class="invalid-feedback" th:errors="*{inderecoCompromisso.numero}"></div>
 									</div>
 
 									<div class="col-md-4">
 										<label for="status" class="form-label">STATUS EVENTO</label>
-										<select id="eventoStatus" name="eventoStatus" class="form-select">
+										<select id="compromissoStatus" name="compromissoStatus"   class="form-select">
 											<option selected>[--STATUS EVENTO--]</option>
-											<option th:each="enum : ${T (erick.br.enums.EventoStatus).values()}"
-												th:value="${enum}" th:text="${enum}"></option>
+											<option th:each="enum : ${T (erick.br.enums.CompromissoStatus).values()}" th:value="${enum}" 
+											th:text="${enum}"  ></option>
 										</select>
 									</div>
 									<div class="col-12">
 										<br>
-										<br>
-										<button type="submit" class="btn btn-primary">AGENDAR</button>
-										<button type="button" class="btn btn-primary">NOVO</button>
+										<button type="submit" class="btn btn-primary">CRIAR COMPROMISSO</button>
+										<button type="button" class="btn btn-primary">NOVO COMPROMISSO</button>
 									</div>
-									</th>
 								</form>
 							</div>
 						</div>
 					</div>
 					<br>
-					<br>
+					
 
 					<div class="card mb-4">
 						<div class="card-header">
@@ -132,44 +130,57 @@
 							th:field="*{buscarEvento}" 
 							th:object="${buscarEvento}" 
 						-->
-						<form action="/pesquisar" method="post"   > 
+						<form action="/pesquisar" method="post">
 							<div class="input-group mb-3">
-								<input type="text" name="buscarEvento" 	th:value="${buscarEvento}" 	  class="form-control"
+								<input type="text" name="buscarCompromisso" th:value="${buscarCompromisso}" class="form-control"
 									placeholder="DIGITE AQUI SUA PESQUISAR" aria-label="Recipient's username"
 									aria-describedby="button-addon2">
 								<button type="submit" class="btn btn-primary">consultar</button>
 							</div>
 						</form>
 						<div class="card-header">
-							<div style="height: 300px; overflow: scroll;" class="col-md-12">
+							<div style="height: 400px; overflow: scroll;" class="col-md-12">
 								<table class="table">
 									<thead>
 										<tr>
-											<th scope="col">ID</th>
-											<th scope="col">EVENTO</th>
-											<th scope="col">STATUS</th>
-											<th scope="col">DATA</th>
-											<th scope="col">EDITAR</th>
-											<th scope="col">DELETAR</th>
+											<th scope="col">ID COMPROMISSO</th>
+											<th scope="col">COMPROMISSO</th>
+											<th scope="col">STATUS COMPROMISSO</th>
+											<th scope="col">DATA COMPROMISSO</th>
+											<th scope="col">EDITAR COMPROMISSO</th>
+											<th scope="col">DELETAR COMPROMISSO</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr th:each="p : ${paginas.content}">
 											<td th:text="${p.id}"></td>
-											<td th:text="${p.nomeEvento}"></td>
-											<td th:text="${p.eventoStatus}"></td>
-											<td th:text="${p.dataEvento}"></td>
-
+											<td th:text="${p.nomeCompromisso}"></td>
+											<td th:text="${p.CompromissoStatus}"></td>
+											<td th:text="${p.dataCompromisso}"></td>
+											<td><a class="btn btn-primary" th:href="@{/editar/{idCompromisso}(idCompromisso=${p.id})}"  role="button">Editar Compromisso</a></td>
 										</tr>
 									</tbody>
 								</table>
 
 								<div class="footer-card" style="color: white;" th:if="${paginas.totalPages > 0}">
+									<span>
+										<a th:if="${paginas.hasPrevious()}" class="page-link"
+											style="display: inline-block ; background-color: #0000FF	; width: 180px;  text-align: center; padding: 10px;"
+											th:href="@{/proxima/pagina(page=${paginas.number -1} , size=${paginas.size} , buscarCompromisso=${buscarCompromisso})}">anterior</a>
+									</span>
+
 									<th:block th:each="index: ${#numbers.sequence(0 , paginas.totalPages - 1)}">
 										<a th:if="${paginas.totalPages > 0}" class="page-link"
 											style="display: inline-block ; background-color: #0000FF	; width: 40px;  text-align: center; padding: 10px;"
-											th:href="@{/proxima/pagina(page=${index} , size=${paginas.size} , buscarEvento=${buscarEvento})}">[[${index}+1]]</a>
+											th:href="@{/proxima/pagina(page=${index} , size=${paginas.size} , buscarCompromisso=${buscarCompromisso})}">[[${index}+1]]</a>
 									</th:block>
+
+
+									<span>
+										<a th:if="${paginas.hasNext()}" class="page-link"
+											style="display: inline-block ; background-color: #0000FF	; width: 180px;  text-align: center; padding: 10px;"
+											th:href="@{/proxima/pagina(page=${paginas.number +1} , size=${paginas.size} , buscarCompromisso=${buscarCompromisso})}">proximo</a>
+									</span>
 								</div>
 							</div>
 						</div>

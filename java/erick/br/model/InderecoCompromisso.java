@@ -1,18 +1,13 @@
 package erick.br.model;
 
-import java.io.Serializable;
-
-import javax.swing.SwingConstants;
-
 import org.hibernate.validator.constraints.NotBlank;
 
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.validation.Valid;
 
 
+@SuppressWarnings({ "deprecation", "deprecation" })
 @Embeddable
-public class 	InderecoEvento {
+public class 	InderecoCompromisso {
 
 	@NotBlank(message = "Informe o nome da cidade")
 	private String cidade;

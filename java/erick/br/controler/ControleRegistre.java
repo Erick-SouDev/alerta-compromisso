@@ -23,7 +23,7 @@ public class ControleRegistre {
 	@GetMapping(value = { "/registrar" })
 	public ModelAndView getRegistre(ModelAndView modelAndView) {
 
-		modelAndView.setViewName("views/registre");
+		modelAndView.setViewName("registre");
 
 		modelAndView.addObject("usuario", new Usuario());
 		return modelAndView;
@@ -32,7 +32,7 @@ public class ControleRegistre {
 	@PostMapping(value = { "/registrar/usuario" })
 	public ModelAndView registrarUsuario(@Valid Usuario usuario, BindingResult result, ModelAndView modelAndView) {
 
-		modelAndView.setViewName("views/registre");
+		modelAndView.setViewName("registre");
 
 		try {
 

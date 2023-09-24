@@ -1,9 +1,9 @@
 package erick.br.enums;
 
-public enum EventoStatus {
+public enum CompromissoStatus {
 
 	CANCELADO,
 	PENDENTE,
-	FINALIZADO
+	FINALISADO
 	
 }
