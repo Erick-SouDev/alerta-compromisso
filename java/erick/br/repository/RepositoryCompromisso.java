@@ -14,6 +14,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import erick.br.dto.CompromissoDTO;
+import erick.br.enums.CompromissoStatus;
 import erick.br.model.Compromisso;
 import erick.br.model.Usuario;
 
@@ -21,7 +23,10 @@ import erick.br.model.Usuario;
 @Transactional
 public interface RepositoryCompromisso extends JpaRepository<Compromisso, Long> {
 
-	@Query("select e from Compromisso e where e.usuario = ?1 ")
+	@Query("select  c from  Compromisso c    where c.dataCompromisso = CURRENT_DATE and c.compromissoStatus = 'PENDENTE' ")
+	public List<Compromisso> buscarCompromissosVencidosDataAtual();
+	
+	@Query("select c from Compromisso c where c.usuario = ?1 ")
 	public  List<Compromisso> findAllCompromissoPorUsuarioLogado(@Param("usuario") Usuario usuario);
 
 	
@@ -42,6 +47,11 @@ public interface RepositoryCompromisso extends JpaRepository<Compromisso, Long> 
 		return findAll(example, pageable);
 
 	}
+	
+	
+	
+	
+
 
 	public default Page<Compromisso> todosCompromissoPaginadosPorUsuarioLogado(Long usuarioLogado, Pageable pageable) {
 
@@ -54,5 +64,11 @@ public interface RepositoryCompromisso extends JpaRepository<Compromisso, Long> 
 		Example<Compromisso> example = Example.of(compromisso, exampleMatcher);
 		return findAll(example, pageable);
 	}
+	
+	
+	
+	
+	
+
 
 }

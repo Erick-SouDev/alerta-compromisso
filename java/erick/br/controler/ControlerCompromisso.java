@@ -47,7 +47,6 @@ public class ControlerCompromisso {
 		modelAndView.setViewName("views/agendar");
 		
 		
-		modelAndView.addObject("compromisso", new Compromisso());
 		Page<Compromisso> paginas = null;
 		if (result.hasErrors()) {
 			paginas = repositoryCompromisso.todosCompromissoPaginadosPorUsuarioLogado(usuario.getId(),
@@ -63,13 +62,13 @@ public class ControlerCompromisso {
 		} else {
 			msg = "SEU COMPROMISSO FOI ATUALISADO COM SUCESSO";
 		}
+		modelAndView.addObject("compromisso", new Compromisso());
 		compromisso.setUsuario(usuario);
 		Compromisso comprom = repositoryCompromisso.save(compromisso);
 
 		modelAndView.addObject("msg", msg);
 		modelAndView.addObject("compromisso", comprom);
-		paginas = repositoryCompromisso.todosCompromissoPaginadosPorUsuarioLogado(usuario.getId(),
-				PageRequest.of(0, 5));
+		paginas = repositoryCompromisso.todosCompromissoPaginadosPorUsuarioLogado(usuario.getId(),PageRequest.of(0, 5));
 		modelAndView.addObject("paginas", paginas);
 		return modelAndView;
 
@@ -89,11 +88,10 @@ public class ControlerCompromisso {
 	}
 
 	@SuppressWarnings("unused")
-	@PostMapping(value = { "/pesquisar" })
+	@PostMapping(value = { "/pesquisar/compromisso" })
 	public ModelAndView pesquisarCompromisso(@RequestParam(value = "buscarCompromisso") String buscarCompromisso,
-			ModelAndView modelAndView, @PageableDefault(size = 5) org.springframework.data.domain.Pageable pageable,
-			HttpServletRequest req) {
-		modelAndView.addObject("compromisso", new Compromisso());
+			ModelAndView modelAndView, @PageableDefault(size = 5) org.springframework.data.domain.Pageable pageable, HttpServletRequest req) {
+		 modelAndView.addObject("compromisso", new Compromisso());
 
 
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
@@ -106,10 +104,10 @@ public class ControlerCompromisso {
 			paginas = repositoryCompromisso.todosCompromissoPaginadosPorUsuarioLogado(usuario.getId(), pageable);
 		}
 
+		
 		modelAndView.addObject("paginas", paginas);
 		modelAndView.addObject("buscarCompromisso", buscarCompromisso);
 		modelAndView.setViewName("views/agendar");
-
 		return modelAndView;
 
 	}
@@ -129,7 +127,6 @@ public class ControlerCompromisso {
 		System.out.println(compromisso);
 		modelAndView.addObject("paginas", paginas);
 		modelAndView.addObject("compromisso", compromisso);
-
 		return modelAndView;
 	}
 

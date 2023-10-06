@@ -40,14 +40,14 @@ public class Compromisso {
 	private String nomeCompromisso;
 
 	
-	@FutureOrPresent(message = "informe a data ")
+	
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(iso = ISO.DATE  ,pattern = "yyyy-MM-dd"   )
+	@DateTimeFormat(pattern = "yyyy-MM-dd"   )
 	private Date dataCompromisso;
 	
 	
 	@Temporal(TemporalType.TIME)
-	@DateTimeFormat(iso = ISO.TIME , pattern = "HH:mm"  )
+	@DateTimeFormat( pattern = "HH:mm"  )
 	private Date horaCompromisso;
     
 	@ManyToOne( fetch = FetchType.EAGER  , optional = false  )
@@ -65,18 +65,7 @@ public class Compromisso {
 		this.id = id;
 	}
 
-	public Compromisso(@NotBlank(message = "nome do evento e obrigatorio") String nomeCompromisso, Long id,
-			@FutureOrPresent(message = "informe a data ") Date dataCompromisso, Date horaCompromisso, Usuario usuario,
-			@Valid InderecoCompromisso inderecoCompromisso, CompromissoStatus compromissoStatus) {
-		super();
-		this.nomeCompromisso = nomeCompromisso;
-		this.id = id;
-		this.dataCompromisso = dataCompromisso;
-		this.horaCompromisso = horaCompromisso;
-		this.usuario = usuario;
-		this.inderecoCompromisso = inderecoCompromisso;
-		this.compromissoStatus = compromissoStatus;
-	}
+
 
 	public Compromisso() {
 		super();

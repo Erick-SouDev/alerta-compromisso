@@ -2,27 +2,19 @@ package erick.br.dto;
 
 import org.springframework.stereotype.Component;
 
+import erick.br.model.Compromisso;
+
 @Component("modelmapper")
 public class CompromissoDTO {
 
-	public CompromissoDTO(String nomeEvento, String dataEvento, String local, String bairro) {
-		this.nomeEvento = nomeEvento;
-		this.dataEvento = dataEvento;
-		Local = local;
-		this.bairro = bairro;
-	}
-
-	public CompromissoDTO() {
+	public CompromissoDTO(Compromisso compromisso) {
+		super();
+		this.nomeEvento = compromisso.getNomeCompromisso();
+		this.dataEvento = compromisso.getDataCompromisso().toLocaleString();
+		this.horaEvento = compromisso.getHoraCompromisso().toLocaleString();
+		this.local = compromisso.getInderecoCompromisso().getNomeLocal();
 
 	}
-
-	private String nomeEvento;
-
-	private String dataEvento;
-
-	private String Local;
-
-	private String bairro;
 
 	public String getNomeEvento() {
 		return nomeEvento;
@@ -40,12 +32,20 @@ public class CompromissoDTO {
 		this.dataEvento = dataEvento;
 	}
 
+	public String getHoraEvento() {
+		return horaEvento;
+	}
+
+	public void setHoraEvento(String horaEvento) {
+		this.horaEvento = horaEvento;
+	}
+
 	public String getLocal() {
-		return Local;
+		return local;
 	}
 
 	public void setLocal(String local) {
-		Local = local;
+		this.local = local;
 	}
 
 	public String getBairro() {
@@ -55,5 +55,19 @@ public class CompromissoDTO {
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
+
+	public CompromissoDTO() {
+
+	}
+
+	private String nomeEvento;
+
+	private String dataEvento;
+
+	private String horaEvento;
+
+	private String local;
+
+	private String bairro;
 
 }

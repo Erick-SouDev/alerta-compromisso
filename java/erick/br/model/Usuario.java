@@ -1,11 +1,11 @@
 package erick.br.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -34,6 +34,15 @@ public class Usuario implements Serializable {
 	@NotBlank(message = "senha obrigatorio")
 	private String senha;
 
+	@OneToMany(mappedBy = "usuario" , cascade = CascadeType.REFRESH , fetch = FetchType.EAGER )
+	private List<Compromisso> compromissos = new ArrayList<>();
+	
+	public List<Compromisso> getCompromissos() {
+		return compromissos;
+	}
+	public void setCompromissos(List<Compromisso> compromissos) {
+		this.compromissos = compromissos;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
