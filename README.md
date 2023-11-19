@@ -3,6 +3,9 @@
 <h1> Projeto "Agendador de Compromissos com Spring MVC, PostgreSQL, Thymeleaf e Notificações Automáticas por Email"</h1>
 ## Resumo Detalhado:
 
+![img-projeto](https://github.com/Erick-SouDev/alerta-compromisso/assets/139890795/28bf1aea-578f-4b36-afe8-af127ef762a4)
+
+
 ### Introdução:
 O projeto "Agendador de Compromissos" é uma aplicação web desenvolvida utilizando a tecnologia Spring MVC como framework principal. O objetivo do projeto é criar uma plataforma que permita aos usuários agendar compromissos, atualizar agendas e receber notificações automáticas por email. Para realizar as notificações automáticas, o projeto utilizará o agendamento de tarefas (`@Scheduled`).
 
